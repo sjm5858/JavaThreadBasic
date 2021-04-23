@@ -23,7 +23,6 @@ public class Test {
             Callable c = new MyCallable(i + " ");
             // 执行任务并获取Future对象
             Future f = pool.submit(c);
-            // System.out.println(">>>" + f.get().toString());
             list.add(f);
         }
         // 关闭线程池
