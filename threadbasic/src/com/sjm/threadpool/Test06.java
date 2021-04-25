@@ -7,12 +7,13 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * 扩展线程池
+ *
  * @author sjm5858@126.com
  * @date 2021/1/2 16:16
  */
 public class Test06 {
     // 定义任务类
-    private static class MyTask implements Runnable{
+    private static class MyTask implements Runnable {
         public String name;
 
         public MyTask(String name) {
@@ -33,16 +34,16 @@ public class Test06 {
     public static void main(String[] args) {
         // 定义扩展线程池，可以定义线程池类继承ThreadPoolExecutor，在子类中重写beforeExecute与afterExecute方法
         // 也可以直接使用ThreadPoolExecutor的内部类
-        ExecutorService executorService = new ThreadPoolExecutor(5,5,0, TimeUnit.SECONDS,new LinkedBlockingQueue<>()){
+        ExecutorService executorService = new ThreadPoolExecutor(5, 5, 0, TimeUnit.SECONDS, new LinkedBlockingQueue<>()) {
             // 在内部类中重写任务开始方法
             @Override
             protected void beforeExecute(Thread t, Runnable r) {
-                System.out.println(t.getName() + "线程准备执行任务:" + ((MyTask)r).name);
+                System.out.println(t.getName() + "线程准备执行任务:" + ((MyTask) r).name);
             }
 
             @Override
             protected void afterExecute(Runnable r, Throwable t) {
-                System.out.println( ((MyTask)r).name + "任务执行完毕");
+                System.out.println(((MyTask) r).name + "任务执行完毕");
             }
 
             @Override
