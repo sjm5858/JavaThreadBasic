@@ -5,6 +5,7 @@ import java.util.concurrent.Executors;
 
 /**
  * 线程池的基本使用
+ *
  * @author sjm5858@126.com
  * @date 2021/1/2 9:46
  */
@@ -23,7 +24,14 @@ public class Test01 {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
+                System.out.println(Thread.currentThread().getId() + " 编号的线程结束任务,结束时间：" +
+                        System.currentTimeMillis());
+
             });
+            System.out.println(Thread.currentThread().getName());
         }
+        System.out.println("----------------------------------");
+        fixedThreadPool.shutdown();
+        fixedThreadPool.execute(()-> System.out.println("sjm666"));
     }
 }

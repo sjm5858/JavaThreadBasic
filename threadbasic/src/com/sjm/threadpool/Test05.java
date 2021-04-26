@@ -40,7 +40,7 @@ public class Test05 {
         }
 
         System.out.println("------------------------------------");
-        while (poolExecutor.getActiveCount() >= 0){
+        while (poolExecutor.getActiveCount() > 0){
             System.out.println("当前线程池核心线程的数量：" + poolExecutor.getCorePoolSize() +
                     ", 最大线程数：" + poolExecutor.getMaximumPoolSize() +
                     ", 当前线程池大小：" + poolExecutor.getPoolSize() +
@@ -50,5 +50,15 @@ public class Test05 {
                     ", 等待任务数：" + poolExecutor.getQueue().size());
             TimeUnit.MILLISECONDS.sleep(1000);
         }
+
+        System.out.println("当前线程池核心线程的数量：" + poolExecutor.getCorePoolSize() +
+                ", 最大线程数：" + poolExecutor.getMaximumPoolSize() +
+                ", 当前线程池大小：" + poolExecutor.getPoolSize() +
+                ", 活动线程数：" + poolExecutor.getActiveCount() +
+                ", 收到任务数量：" + poolExecutor.getTaskCount() +
+                ", 完成任务数：" + poolExecutor.getCompletedTaskCount() +
+                ", 等待任务数：" + poolExecutor.getQueue().size());
+
+        poolExecutor.shutdown();
     }
 }

@@ -20,7 +20,7 @@ public class Test02 {
         }, 2, TimeUnit.SECONDS);
 
         // 以固定的频率执行任务，开启任务的时间是固定的
-        scheduledExecutorService.scheduleAtFixedRate(()->{
+        scheduledExecutorService.scheduleAtFixedRate(() -> {
             System.out.println(Thread.currentThread().getId() + "--以固定频率开启任务 " + System.currentTimeMillis());
             try {
                 // 睡眠模拟任务执行时间，如果任务执行时长超过了时间间隔，则任务完成后立即开启下个任务
@@ -28,7 +28,7 @@ public class Test02 {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-        },3,2,TimeUnit.SECONDS);
+        }, 3, 2, TimeUnit.SECONDS);
 
 //        // 在上次任务结束后，在固定延迟后再次执行该任务，不管执行任务耗时多长，总是在任务结束后的2秒再次开启新的任务
 //        scheduledExecutorService.scheduleWithFixedDelay(()->{
